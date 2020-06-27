@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Login Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style/loginStyle.css">
+</head>
+<body>
+<div class="login-page" ng-app="loginApp" ng-controller="loginFormController">
+    <form class="form" name="loginForm" ng-submit="submitForm(loginForm.$valid)" >
+
+        <div class="form-group" ng-class="{ 'has-error' : 
+            loginForm.name.$invalid && !loginForm.name.$pristine }">
+            <input type="text" placeholder="name" name="username" ng-model="username" required>
+            <p ng-show="loginForm.username.$dirty && loginForm.username.$error.required" 
+                class="help-block">Name is required</p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : 
+            loginForm.password.$invalid && !loginForm.password.$pristine }">
+            <input type="password" placeholder="password" name="password" ng-model="password" ng-minLength="6" required>
+            <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" 
+                class="help-block">Password must be at least 6 characters.</p>
+        </div>
+
+        <button type="submit">Login</button>
+        <p class="message">Create an account. <a href="#">Register</a></p>
+    </form>
+</div>
+
+<script src="../js/app.js"></script>
+
+</body>
+</html>
