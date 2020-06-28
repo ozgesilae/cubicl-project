@@ -2,13 +2,14 @@
 <html lang="en-US">
 <head>
     <title>Login Page</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/dexie.js"></script>
+    <script src="../js/db.js"></script>
     <link rel="stylesheet" type="text/css" href="../style/loginStyle.css">
 </head>
 <body>
 <div class="login-page" ng-app="loginApp" ng-controller="loginFormController">
-    <form class="form" name="loginForm" ng-submit="submitForm(loginForm.$valid)" >
+    <form class="form" name="loginForm" ng-submit="submitForm(loginForm.$valid, username, password)" >
 
         <div class="form-group" ng-class="{ 'has-error' : 
             loginForm.name.$invalid && !loginForm.name.$pristine }">
